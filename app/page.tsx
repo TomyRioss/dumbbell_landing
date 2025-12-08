@@ -26,7 +26,7 @@ export default function Home() {
     });
 
     const img = new window.Image();
-    img.src = `https://script.google.com/macros/s/AKfycbwtsUEUHaGEsZgRJTBO2vXYxi4ELWY33u0W0fo-44nTWBwAtkgyLhb5LMgqZr58Ca_n/exec?${params.toString()}`;
+    img.src = `https://script.google.com/macros/s/AKfycbyjnC-HpnlQhXyfsShlwgAqJl90-JxNAH3XKqn4436YOp3YPzg2t_3a6QTg9KJaQme2XA/exec?${params.toString()}`;
 
     setTimeout(() => {
       setLoading(false);

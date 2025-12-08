@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(start chrome \"http://localhost:3000\" --auto-open-devtools-for-tabs)"
+      "Bash(start chrome \"http://localhost:3000\" --auto-open-devtools-for-tabs)",
+      "Bash(cat:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
