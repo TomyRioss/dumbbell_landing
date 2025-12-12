@@ -192,7 +192,7 @@ export default function Home() {
               </div>
             </div>
             <div className="inline-block bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs md:text-sm font-medium mb-4">
-              Solo 20 cupos disponibles
+              Solo 100 cupos disponibles
             </div>
             <p className="text-neutral-300 font-medium text-sm md:text-base mb-6 md:mb-8">
               50% OFF por 6 meses para early adopters
