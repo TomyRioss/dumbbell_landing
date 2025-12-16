@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaCalendarAlt, FaClipboardList, FaIdCard, FaDollarSign, FaFileAlt, FaMobileAlt, FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from "react-icons/fa";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -13,6 +20,8 @@ export default function Home() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,32 +47,37 @@ export default function Home() {
     {
       title: "Gestión de Turnos",
       description: "Administra turnos y paquetes de clases de forma eficiente",
-      icon: <FaCalendarAlt className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920",
     },
     {
       title: "Rutinas Personalizadas",
       description: "Crea y asigna rutinas de entrenamiento a tus miembros",
-      icon: <FaClipboardList className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=1920",
     },
     {
       title: "Membresías",
       description: "Control total de membresías y planes de suscripción",
-      icon: <FaIdCard className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1920",
     },
     {
       title: "Cobros Automáticos",
       description: "Gestiona cobros mensuales y controla ingresos",
-      icon: <FaDollarSign className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920",
     },
     {
       title: "Contenido Exclusivo",
       description: "Publica contenido para tus miembros",
-      icon: <FaFileAlt className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1920",
     },
     {
       title: "App Web y Móvil",
       description: "Accede desde cualquier dispositivo",
-      icon: <FaMobileAlt className="w-8 h-8" />,
+      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1920",
+    },
+    {
+      title: "Página Web Promocional",
+      description: "Diseño único con animaciones, efectos visuales y links a redes sociales",
+      image: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=1920",
     },
   ];
 
@@ -147,27 +161,58 @@ export default function Home() {
       </header>
 
       {/* Features Section */}
-      <section className="py-24 px-6 bg-neutral-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Todo lo que necesitas
-          </h2>
-          <p className="text-neutral-500 text-center mb-16 max-w-2xl mx-auto">
-            Una plataforma completa para modernizar la gestión de tu gimnasio
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-neutral-800/50 border border-neutral-800 rounded-2xl p-6 hover:border-neutral-600 hover:bg-neutral-800 transition-all"
-              >
-                <div className="text-neutral-400 mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-neutral-500">{feature.description}</p>
+      <section className="h-[50vh] w-full relative group">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          onSwiper={setSwiperRef}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          loop={true}
+          className="h-full w-full"
+        >
+          {features.map((feature, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative h-full w-full">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/60" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                  <h3 className="text-3xl md:text-5xl font-bold mb-4">{feature.title}</h3>
+                  <p className="text-neutral-300 text-lg md:text-xl max-w-2xl">{feature.description}</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button
+          onClick={() => swiperRef?.slidePrev()}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all opacity-0 group-hover:opacity-100"
+        >
+          <FaChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => swiperRef?.slideNext()}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all opacity-0 group-hover:opacity-100"
+        >
+          <FaChevronRight className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => {
+            if (isPlaying) {
+              swiperRef?.autoplay.stop();
+            } else {
+              swiperRef?.autoplay.start();
+            }
+            setIsPlaying(!isPlaying);
+          }}
+          className="absolute bottom-4 right-4 z-10 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all"
+        >
+          {isPlaying ? <FaPause className="w-4 h-4" /> : <FaPlay className="w-4 h-4" />}
+        </button>
       </section>
 
       {/* Pricing Section */}
