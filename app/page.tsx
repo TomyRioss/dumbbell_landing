@@ -158,7 +158,7 @@ export default function Home() {
               <span className="text-white font-bold ml-2">
                 $17.500/mes
               </span>
-              <span className="text-sm ml-1">(6 meses)</span>
+              <span className="text-sm ml-1">(3 meses)</span>
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@ export default function Home() {
             Precio de lanzamiento
           </h2>
           <p className="text-neutral-500 text-sm md:text-base mb-8 md:mb-12">
-            Inscríbete ahora y obtén 50% OFF durante los primeros 6 meses
+            Inscríbete ahora y obtén 50% OFF durante los primeros 3 meses
           </p>
           <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 border border-neutral-700 rounded-2xl md:rounded-3xl p-6 md:p-12">
             <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 mb-4 md:mb-6">
@@ -244,7 +244,7 @@ export default function Home() {
               Solo 100 cupos disponibles
             </div>
             <p className="text-neutral-300 font-medium text-sm md:text-base mb-6 md:mb-8">
-              50% OFF por 6 meses para early adopters
+              50% OFF por 3 meses para early adopters
             </p>
             <ul className="text-left max-w-md mx-auto space-y-2 md:space-y-3 mb-6 md:mb-8 text-sm md:text-base">
               <li className="flex items-center gap-3">
@@ -280,8 +280,11 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Registra tu interés
           </h2>
-          <p className="text-neutral-500 text-center mb-8">
+          <p className="text-neutral-500 text-center mb-4">
             Sé de los primeros en acceder y asegura tu descuento del 50%
+          </p>
+          <p className="text-neutral-400 text-center text-sm mb-8 underline">
+            La pre-inscripción es totalmente gratuita. Solo se cobrará una vez tengas la herramienta instalada y activa.
           </p>
 
           {submitted ? (
