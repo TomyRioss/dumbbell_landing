@@ -40,6 +40,10 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
+      // TikTok Pixel - Track form completion
+      if (typeof window !== "undefined" && (window as any).ttq) {
+        (window as any).ttq.track("CompleteRegistration");
+      }
     }, 1500);
   };
 
