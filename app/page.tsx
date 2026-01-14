@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -367,9 +367,29 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4">
           <div className="flex items-center gap-2">
             <span className="font-bold">Dumbbell</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <a
+              href="https://www.instagram.com/dumbbell.app1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-400 hover:text-white transition-colors"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="w-7 h-7" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@dumbell.app?lang=es"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-400 hover:text-white transition-colors"
+              aria-label="TikTok"
+            >
+              <FaTiktok className="w-7 h-7" />
+            </a>
           </div>
           <p className="text-neutral-600 text-sm">
             © {new Date().getFullYear()} Dumbbell. Todos los derechos reservados.
